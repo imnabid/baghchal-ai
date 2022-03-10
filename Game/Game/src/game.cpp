@@ -2,12 +2,11 @@
 
 Game::Game() :
 	piece_selected(false),
-	turn(0),
 	GOATS(2),
 	goat_eating_move(false),
 	GOATS_KILLED(0)
 {
-
+	turn = 0;
 	sf::FloatRect grid = board.grid_dimensions();
 	width = 100;
 	std::cout << grid.left << ',' << grid.top << ',' << grid.width << ',' << grid.height << '\n';
@@ -20,6 +19,9 @@ Game::Game() :
 	tigers[1].set_position(highx, lowy);
 	tigers[2].set_position(lowx, highy);
 	tigers[3].set_position(highx, highy);
+
+	tigers_ptr = &tigers;
+	std::cout << "adress of tiger1 " << &tigers[0] << '\n';
 }
 
 void Game::calc_possible_moves(sf::Vector2f point)
@@ -275,6 +277,7 @@ void Game::move_piece(int x, int y)
 		goat_pointer->reset_color();
 		piece_selected = false;
 		turn = 1;
+		goat_pos4_ai = (sf::Vector2i(point.x, point.y));
 		possible_moves.clear();
 		circles.clear();
 	}
@@ -422,6 +425,18 @@ void Game::reset_color_goats()
 	for (Goat* goat : goats)
 	{
 		goat->reset_color();
+	}
+}
+
+void Game::move_tiger_from_ai(sf::Vector2f tiger_pos, sf::Vector2f new_pos)
+{
+	for (auto tiger : tigers)
+	{
+		if (tiger.get_position() == tiger_pos)
+		{
+			tiger.set_position(new_pos.x, new_pos.y);
+			break;
+		}
 	}
 }
 
