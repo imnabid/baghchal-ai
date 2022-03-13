@@ -186,7 +186,7 @@ public:
 				// goat_eat_checker(move, eating_moves, );
 				ptr = &board;
 				// print_board(board);
-				int score = minimax(board, 0, 2, false);
+				int score = minimax(board, 0, 4, false);
 
 				// cout << "best score for " << move[0] << ',' << move[1] << '=' << score << endl;
 				board[t_pos[0]][t_pos[1]] = 'T'; //reset
