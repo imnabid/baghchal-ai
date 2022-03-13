@@ -138,7 +138,8 @@ public:
 		// int x = 1, y = 0;
 		vector<int> goat_move = normalize({ game.goat_pos4_ai.x, game.goat_pos4_ai.y });
 		board[goat_move[0]][goat_move[1]] = 'G';
-
+		cout << "initial board\n";
+		print_board(board);
 		// vector<vector<int>> t_moves = { { 4, 1 }, { 3, 1 }, { 2, 0 } };
 		// vector<vector<int>> eating_moves = { { 2, 0 } };
 
@@ -149,8 +150,8 @@ public:
 		{
 			sf::Vector2f pos = tiger.get_position();
 			ptr = &board;
-			cout << "initial board\n";
-			print_board(board);
+			// cout << "initial board\n";
+			// print_board(board);
 			vector<int> t_pos = normalize({ (int)pos.x, (int)pos.y });
 
 			vector<vector<int>> t_moves;
@@ -160,7 +161,7 @@ public:
 
 			for (auto move : t_moves)
 			{
-				cout << "initial move: " << move[0] << ',' << move[1] << endl;
+				// cout << "initial move: " << move[0] << ',' << move[1] << endl;
 				tiger_pos = denormalize(move);
 				board[t_pos[0]][t_pos[1]] = '-'; //working with tiger at each position
 				board[move[0]][move[1]] = 'T';
@@ -173,10 +174,11 @@ public:
 				{
 					if (move[0] == e_move[0].x and move[1] == e_move[0].y)
 					{
+						cout << "gooat eaten at " << move[0] << ',' << move[1] << '\n';
 						goat_killed += 1;
 						ate_move.push_back(e_move[1].x); //pushing the goat_pos which was eaten
 						ate_move.push_back(e_move[1].y);
-						board[goat_move[0]][goat_move[1]] = '-';
+						board[e_move[1].x][e_move[1].y] = '-';
 						eating_move = true;
 					}
 				}
@@ -186,7 +188,7 @@ public:
 				// print_board(board);
 				int score = minimax(board, 0, 2, false);
 
-				cout << "best score for " << move[0] << ',' << move[1] << '=' << score << endl;
+				// cout << "best score for " << move[0] << ',' << move[1] << '=' << score << endl;
 				board[t_pos[0]][t_pos[1]] = 'T'; //reset
 				board[move[0]][move[1]] = '-';
 
@@ -203,7 +205,9 @@ public:
 				if (eating_move)
 				{
 					board[ate_move[0]][ate_move[1]] = 'G';
+					cout << "gooat returned at " << ate_move[0] << ',' << ate_move[1] << '\n';
 					eating_move = false;
+					print_board((board));
 					ate_move.clear();
 				}
 
@@ -221,12 +225,13 @@ public:
 			final_goat_ate_pos.clear();
 		}
 
-		print_board(board);
-		cout << "best move " << best_move[0] << ',' << best_move[1] << endl;
+		// print_board(board);
+		// cout << "best move " << best_move[0] << ',' << best_move[1] << endl;
 		sf::Vector2f final_pos = denormalize({ best_move[0], best_move[1] });
 		tiger_pointer->set_position(final_pos.x, final_pos.y);
 		game.turn = 0;
 		game.win();
+		print_board(board);
 	}
 
 	int minimax(array<array<char, 5>, 5> board, int depth, int h, bool is_max)
@@ -279,7 +284,7 @@ public:
 		}
 		else
 		{
-			cout << "minimizer\n";
+			// cout << "minimizer\n";
 			int best_score = 10000;
 
 			vector<vector<int>> g_moves = calc_goat_moves(board);
