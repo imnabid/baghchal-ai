@@ -95,6 +95,7 @@ int Baghchal::run_game(bool aii)
 				if (back_button.clicked(pos))
 				{
 					game.reset();
+					ai.reset();
 					audio_temp.play();
 					sf::sleep(sf::Time(sf::seconds(0.2)));
 					return -1;

@@ -40,6 +40,16 @@ public:
 		}
 	}
 
+	void reset()
+	{
+		goat_killed = 0;
+		board = { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' };
+		board[0][0] = 'T';
+		board[0][4] = 'T';
+		board[4][0] = 'T';
+		board[4][4] = 'T';
+	}
+
 	void print_gmoves(vector<vector<sf::Vector2i>> eating_moves)
 	{
 		cout << "eating moves\n";
