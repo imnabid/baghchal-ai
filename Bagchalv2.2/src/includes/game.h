@@ -1,5 +1,6 @@
 #ifndef BAAGCHAAL_GAME
 #define BAAGCHAAL_GAME
+#include "includes/Audio.h"
 #include "includes/board.h"
 #include "includes/goat.h"
 #include "includes/text.h"
@@ -16,7 +17,7 @@ private:
 
 	//info texts
 	Text goats_ate_text, turn_text, turn_header_text, goats_in_hand_text;
-
+	Audio tiger_audio, goat_audio;
 	std::array<Tiger, 4> tigers;
 	Tiger* tiger_pointer;
 
@@ -82,6 +83,8 @@ public:
 	void win();
 	int get_turn();
 	void update_info_board();
+	void play_movement_audio();
+	void stop_movement_audio();
 	void reset_color_goats();
 	bool get_piece_selected();
 	void reset();

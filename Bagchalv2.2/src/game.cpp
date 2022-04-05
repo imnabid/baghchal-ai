@@ -30,6 +30,9 @@ Game::Game() :
 	goats_in_hand_text.create("GOATS IN HAND: 20", 35, 230, sf::Color::Red, 30, "content/home_font.ttf");
 	turn_text.create("GOAT", 910, 510, sf::Color::Green, 40, "content/home_font.ttf");
 	turn_header_text.create("Turn", 890, 400, sf::Color::Red, 70, "content/home_font.ttf");
+	//audio
+	tiger_audio.create("content/Tiger_game_voice.wav", 100);
+	goat_audio.create("content/Goat_game_voice.wav", 100);
 }
 
 void Game::calc_possible_moves(sf::Vector2f point)
@@ -267,6 +270,7 @@ void Game::move_piece(int x, int y)
 		tiger_pointer->set_position(point.x, point.y);
 		tiger_pointer->reset_color();
 		piece_selected = false;
+		play_movement_audio();
 		turn = 0;
 		possible_moves.clear();
 		circles.clear();
@@ -285,6 +289,7 @@ void Game::move_piece(int x, int y)
 		goat_pointer->set_position(point.x, point.y);
 		goat_pointer->reset_color();
 		piece_selected = false;
+		play_movement_audio();
 		turn = 1;
 		goat_pos4_ai = (sf::Vector2i(point.x, point.y));
 		possible_moves.clear();
@@ -413,6 +418,26 @@ void Game::update_info_board()
 
 	std::string t = turn == 1 ? "TIGER" : "GOAT";
 	turn_text.set_text(t);
+}
+
+void Game::play_movement_audio()
+{
+	if (turn)
+	{
+		tiger_audio.play();
+	}
+	else
+	{
+		goat_audio.play();
+	}
+}
+
+void Game::stop_movement_audio()
+{
+	sf::Time t = sf::seconds(1.5);
+	sf::sleep(t);
+	tiger_audio.stop();
+	goat_audio.stop();
 }
 
 void Game::win()

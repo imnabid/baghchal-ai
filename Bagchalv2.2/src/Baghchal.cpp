@@ -53,6 +53,7 @@ void Baghchal::run_home()
 
 		if (winner != -1)
 		{
+			sf::sleep(sf::Time(sf::seconds(1.5)));
 			winner = win_screen(winner); //inorder to reset winner back to -1
 		}
 
@@ -76,7 +77,7 @@ int Baghchal::run_game(bool aii)
 	sf::Time t = sf::seconds(0.2);
 	sf::sleep(t);
 	audio_temp.pause();
-	bool ai_piece = aii;
+	bool ai_piece = aii; //true if AI was selected to play with
 
 	//back button
 	Button back_button("content/back.png", sf::Vector2f(900, 100));
@@ -110,11 +111,11 @@ int Baghchal::run_game(bool aii)
 				else
 				{
 					game.move_piece(pos.x, pos.y);
+
 					//there is win check at the end
 				}
 			}
 		}
-
 		window.clear();
 		window.draw(game);
 		window.draw(back_button);
@@ -124,6 +125,7 @@ int Baghchal::run_game(bool aii)
 			sf::Time t = sf::seconds(1.2f);
 			sf::sleep(t);
 			ai.find_best_move(game);
+			game.update_info_board();
 		}
 		if (game.winner != -1)
 		{
@@ -138,6 +140,8 @@ int Baghchal::win_screen(int winner)
 	sf::Font font;
 	font.loadFromFile("content/test.ttf");
 	Audio audio_temp("content/click.wav", 20);
+	Audio tiger_win("content/tiger_win.wav", 90);
+	Audio goat_win("content/tiger_win.wav", 90);
 	sf::Text text;
 	Button back_button("content/home_button.png", sf::Vector2f(520, 400));
 	text.setFont(font);
@@ -172,7 +176,7 @@ int Baghchal::win_screen(int winner)
 
 	Text t1("Tiger Wins", 320, 250, sf::Color(157, 2, 8), 85, "content/test.ttf");
 	Text t2("Goat Wins", 320, 250, sf::Color(208, 0, 0), 85, "content/test.ttf");
-
+	win == 1 ? tiger_win.play() : goat_win.play();
 	while (window.isOpen())
 	{
 		sf::Event event;
