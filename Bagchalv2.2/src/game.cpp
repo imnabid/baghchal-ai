@@ -251,7 +251,7 @@ void Game::create_circles()
 void Game::move_piece(int x, int y)
 {
 	sf::Vector2i point = nearest_point(x, y);
-	if (get_turn() == 1 and valid_click(point.x, point.y))
+	if (get_turn() == 1 and valid_click(point.x, point.y) and point != sf::Vector2i(0, 0))
 	{
 		if (goat_eating_move)
 		{
