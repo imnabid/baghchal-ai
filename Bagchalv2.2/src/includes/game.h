@@ -14,6 +14,7 @@ class Game : public sf::Drawable
 private:
 	Board board;
 	bool piece_selected;
+	int goats_in_hand;
 
 	//info texts
 	Text goats_ate_text, turn_text, turn_header_text, goats_in_hand_text;

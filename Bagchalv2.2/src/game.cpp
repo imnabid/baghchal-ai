@@ -9,6 +9,7 @@ Game::Game() :
 
 {
 	goat_no = 0;
+	goats_in_hand = 20;
 	turn = 0;
 	sf::FloatRect grid = board.grid_dimensions();
 	width = 100;
@@ -139,6 +140,7 @@ void Game::select_goat(int x, int y)
 			goats.push_back(goat);
 			//new line
 			goat_pointer = goat;
+			goats_in_hand--;
 			possible_moves.push_back({ point.x, point.y }); //inorder to make valid_click  while placing goat
 			move_piece(x, y);
 		}
@@ -412,7 +414,7 @@ void Game::update_info_board()
 	std::string head = "GOATS KILLED: ";
 	goats_ate_text.set_text(head + text.str());
 	std::ostringstream text2;
-	text2 << 20 - GOATS_KILLED;
+	text2 << goats_in_hand;
 	head = "GOATS IN HAND: ";
 	goats_in_hand_text.set_text(head + text2.str());
 
