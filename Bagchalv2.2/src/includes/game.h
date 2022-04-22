@@ -14,7 +14,6 @@ class Game : public sf::Drawable
 private:
 	Board board;
 	bool piece_selected;
-	int goats_in_hand;
 
 	//info texts
 	Text goats_ate_text, turn_text, turn_header_text, goats_in_hand_text;
@@ -59,8 +58,10 @@ private:
 
 public:
 	int winner; //1 tiger 0 goat -1 none
+	int goats_in_hand;
 	std::array<Tiger, 4>* tigers_ptr;
 	sf::Vector2i goat_pos4_ai;
+	sf::Vector2f goat_pos4_ai_delete_goat_pos;
 	void move_tiger_from_ai(sf::Vector2f tiger_pos, sf::Vector2f new_pos);
 	int turn; //0-goat, 1-tiger
 	// std::vector<Goat*> goats;

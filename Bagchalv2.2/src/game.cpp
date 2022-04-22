@@ -288,6 +288,7 @@ void Game::move_piece(int x, int y)
 	}
 	else if (get_turn() == 0 and valid_click(point.x, point.y))
 	{
+		goat_pos4_ai_delete_goat_pos = goat_pointer->get_position();
 		goat_pointer->set_position(point.x, point.y);
 		goat_pointer->reset_color();
 		piece_selected = false;
@@ -410,6 +411,7 @@ void Game::update_info_board()
 {
 	//to convert numbers to string;
 	std::ostringstream text;
+
 	text << GOATS_KILLED;
 	std::string head = "GOATS KILLED: ";
 	goats_ate_text.set_text(head + text.str());

@@ -144,24 +144,26 @@ public:
 
 	void find_best_move(Game& game)
 	{
-
-		// int x = 1, y = 0;
 		vector<int> goat_move = normalize({ game.goat_pos4_ai.x, game.goat_pos4_ai.y });
 		board[goat_move[0]][goat_move[1]] = 'G';
+
+		//if the placement is finished then goat position from before should be removed
+		if (game.goats_in_hand == 0)
+		{
+			vector<int> goat_pos_before = normalize({ int(game.goat_pos4_ai_delete_goat_pos.x), int(game.goat_pos4_ai_delete_goat_pos.y) });
+			board[goat_pos_before[0]][goat_pos_before[1]] = '-';
+		}
+
 		cout << "initial board\n";
-		print_board(board);
-		// vector<vector<int>> t_moves = { { 4, 1 }, { 3, 1 }, { 2, 0 } };
-		// vector<vector<int>> eating_moves = { { 2, 0 } };
+		// print_board(board);
 
 		int best_score = -10000;
 		int best_move[2] = { 100, 100 }; //random move for now
-		//test
+
 		for (Tiger& tiger : *(game.tigers_ptr))
 		{
 			sf::Vector2f pos = tiger.get_position();
 			ptr = &board;
-			// cout << "initial board\n";
-			// print_board(board);
 			vector<int> t_pos = normalize({ (int)pos.x, (int)pos.y });
 
 			vector<vector<int>> t_moves;
@@ -217,7 +219,7 @@ public:
 					board[ate_move[0]][ate_move[1]] = 'G';
 					cout << "gooat returned at " << ate_move[0] << ',' << ate_move[1] << '\n';
 					eating_move = false;
-					print_board((board));
+					// print_board((board));
 					ate_move.clear();
 				}
 
@@ -225,6 +227,7 @@ public:
 			}
 		}
 		board[best_move[0]][best_move[1]] = 'T';
+
 		vector<int> initial_tiger = normalize({ int(initial_t_pos.x), int(initial_t_pos.y) });
 		board[initial_tiger[0]][initial_tiger[1]] = '-';
 		if (final_goat_ate_pos.size())
@@ -235,13 +238,13 @@ public:
 			final_goat_ate_pos.clear();
 		}
 
-		// print_board(board);
-		// cout << "best move " << best_move[0] << ',' << best_move[1] << endl;
+		print_board(board);
+		cout << "best move " << best_move[0] << ',' << best_move[1] << endl;
 		sf::Vector2f final_pos = denormalize({ best_move[0], best_move[1] });
 		tiger_pointer->set_position(final_pos.x, final_pos.y);
 		game.turn = 0;
 		game.win();
-		print_board(board);
+		// print_board(board);
 	}
 
 	int minimax(array<array<char, 5>, 5> board, int depth, int h, bool is_max)
