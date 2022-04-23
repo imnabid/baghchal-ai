@@ -26,3 +26,7 @@ void Audio::stop()
 {
 	sound_s.stop();
 }
+void Audio::set_loop(bool x)
+{
+	sound_s.setLoop(x);
+}

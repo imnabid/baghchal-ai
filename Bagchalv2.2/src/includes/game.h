@@ -64,8 +64,6 @@ public:
 	sf::Vector2f goat_pos4_ai_delete_goat_pos;
 	void move_tiger_from_ai(sf::Vector2f tiger_pos, sf::Vector2f new_pos);
 	int turn; //0-goat, 1-tiger
-	// std::vector<Goat*> goats;
-	// std::array<Tiger, 4> tigers;
 	int GOATS_KILLED;
 	Game();
 	void calc_possible_moves(sf::Vector2f point);

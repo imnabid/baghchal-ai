@@ -14,7 +14,7 @@ Baghchal::Baghchal()
 void Baghchal::run_home()
 {
 	Home home;
-	Audio audio("content/deep.wav", 10);
+	Audio audio("content/deep.wav", 30);
 
 	audio.play();
 
@@ -72,6 +72,7 @@ int Baghchal::run_game(bool aii)
 {
 	game.winner = -1;
 	Audio audio_temp("content/click.wav", 20);
+	audio_temp.set_loop(true);
 	audio_temp.play();
 
 	sf::Time t = sf::seconds(0.2);
@@ -142,17 +143,13 @@ int Baghchal::win_screen(int winner)
 	font.loadFromFile("content/test.ttf");
 	Audio audio_temp("content/click.wav", 20);
 	Audio tiger_win("content/tiger_win.wav", 90);
-	Audio goat_win("content/tiger_win.wav", 90);
+	Audio goat_win("content/goat_win.wav", 90);
 	sf::Text text;
 	Button back_button("content/home_button.png", sf::Vector2f(520, 400));
 	text.setFont(font);
 	text.setPosition(900, 10);
 	text.setCharacterSize(34);
 	text.setFillColor(sf::Color::Red);
-
-	// sf::Clock clock;   // starts the clock
-	// sf::Time elapsed1; // set time object
-	// std::stringstream ss;
 
 	int win = winner; //Goat-0 Tiger - 1
 
@@ -208,12 +205,6 @@ int Baghchal::win_screen(int winner)
 		{
 			window.draw(t1);
 		}
-		// elapsed1 = clock.getElapsedTime();
-
-		// ss.str(std::string()); //clear the string
-		// ss << elapsed1.asSeconds();
-
-		// text.setString(ss.str().c_str());
 		window.draw(winner_s);
 		window.draw(text);
 		window.draw(back_button);

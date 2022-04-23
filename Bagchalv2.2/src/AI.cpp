@@ -12,11 +12,13 @@ public:
 	int goat_killed;
 	sf::Vector2f initial_t_pos;
 	vector<int> final_goat_ate_pos;
+	Audio tiger_audio_ai;
 
 	int lowx, lowy, highx, highy, width;
 
 	AI()
 	{
+		tiger_audio_ai.create("content/Tiger_game_voice.wav", 40);
 		goat_killed = 0;
 		board = { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' };
 		board[0][0] = 'T';
@@ -241,6 +243,7 @@ public:
 		print_board(board);
 		cout << "best move " << best_move[0] << ',' << best_move[1] << endl;
 		sf::Vector2f final_pos = denormalize({ best_move[0], best_move[1] });
+		tiger_audio_ai.play();
 		tiger_pointer->set_position(final_pos.x, final_pos.y);
 		game.turn = 0;
 		game.win();

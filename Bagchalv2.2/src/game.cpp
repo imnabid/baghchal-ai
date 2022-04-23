@@ -32,8 +32,8 @@ Game::Game() :
 	turn_text.create("GOAT", 910, 510, sf::Color::Green, 40, "content/home_font.ttf");
 	turn_header_text.create("Turn", 890, 400, sf::Color::Red, 70, "content/home_font.ttf");
 	//audio
-	tiger_audio.create("content/Tiger_game_voice.wav", 100);
-	goat_audio.create("content/Goat_game_voice.wav", 100);
+	tiger_audio.create("content/Tiger_game_voice.wav", 40);
+	goat_audio.create("content/Goat_game_voice.wav", 40);
 }
 
 void Game::calc_possible_moves(sf::Vector2f point)

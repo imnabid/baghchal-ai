@@ -14,5 +14,6 @@ public:
 	void play();
 	void pause();
 	void stop();
+	void set_loop(bool x);
 };
 #endif
