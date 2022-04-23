@@ -229,7 +229,7 @@ public:
 				goat_killed = 0;
 			}
 		}
-		cout << "1m\n";
+		cout << "1m best score" << best_score << best_move[0] << ',' << best_move[0] << "\n";
 		board[best_move[0]][best_move[1]] = 'T';
 		cout << "2m\n";
 		vector<int> initial_tiger = normalize({ int(initial_t_pos.x), int(initial_t_pos.y) });
@@ -297,6 +297,12 @@ public:
 					ate_move.clear();
 					goat_killed -= 1;
 				}
+			}
+
+			//test
+			if (t_moves.size() == 0)
+			{
+				return -5;
 			}
 			// cout << "best score " << best_score << endl;
 			return best_score;

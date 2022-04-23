@@ -451,6 +451,7 @@ void Game::win()
 	{
 		std::cout << "TIGERS WON\n";
 		winner = 1;
+		turn = -1;
 	}
 
 	//goat win check
@@ -468,6 +469,7 @@ void Game::win()
 	{
 		std::cout << "GOATS WON\n";
 		winner = 0;
+		turn = -1;
 	}
 
 	reset_color_goats();

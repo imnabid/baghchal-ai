@@ -121,7 +121,7 @@ int Baghchal::run_game(bool aii)
 		window.draw(game);
 		window.draw(back_button);
 		window.display();
-		if (game.get_turn() == 1 and ai_piece)
+		if (game.get_turn() == 1 and ai_piece and game.winner == -1)
 		{
 			sf::Time t = sf::seconds(1.2f);
 			sf::sleep(t);
