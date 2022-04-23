@@ -172,6 +172,7 @@ public:
 			vector<vector<sf::Vector2i>> dummy_eating_moves;
 			calc_possible_moves(t_moves, dummy_eating_moves, pos, 1);
 			normalize_possible_moves(t_moves, dummy_eating_moves);
+			print_moves(t_moves);
 
 			for (auto move : t_moves)
 			{
@@ -228,10 +229,12 @@ public:
 				goat_killed = 0;
 			}
 		}
+		cout << "1m\n";
 		board[best_move[0]][best_move[1]] = 'T';
-
+		cout << "2m\n";
 		vector<int> initial_tiger = normalize({ int(initial_t_pos.x), int(initial_t_pos.y) });
 		board[initial_tiger[0]][initial_tiger[1]] = '-';
+		cout << "3m\n";
 		if (final_goat_ate_pos.size())
 		{
 			board[final_goat_ate_pos[0]][final_goat_ate_pos[1]] = '-';

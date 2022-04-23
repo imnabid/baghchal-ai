@@ -113,7 +113,6 @@ int Baghchal::run_game(bool aii)
 				else
 				{
 					game.move_piece(pos.x, pos.y);
-
 					//there is win check at the end
 				}
 			}
@@ -131,6 +130,10 @@ int Baghchal::run_game(bool aii)
 		}
 		if (game.winner != -1)
 		{
+			window.clear();
+			window.draw(game);
+			window.draw(back_button);
+			window.display();
 			return game.winner;
 		}
 	}
@@ -191,6 +194,7 @@ int Baghchal::win_screen(int winner)
 				if (back_button.clicked(pos))
 				{
 					game.reset();
+					ai.reset();
 					audio_temp.play();
 					sf::sleep(sf::Time(sf::seconds(0.2)));
 					return -1;
