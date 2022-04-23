@@ -516,6 +516,7 @@ void Game::reset()
 	GOATS_KILLED = 0;
 	goat_eating_move = false;
 	piece_selected = false;
+	goats_in_hand = 20;
 	goat_no = 0;
 	update_info_board();
 }
