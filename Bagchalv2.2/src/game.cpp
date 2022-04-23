@@ -131,12 +131,12 @@ void Game::select_goat(int x, int y)
 	//goat placement for initial moves
 	if ((unsigned)goat_no < GOATS)
 	{
-		goat_no++;
+
 		sf::Vector2i point = nearest_point(x, y);
 		if (!tiger_there(point.x, point.y) and !goat_there(point.x, point.y) and point != sf::Vector2i(0, 0))
 		{
+			goat_no++;
 			Goat* goat = new Goat;
-
 			goats.push_back(goat);
 			//new line
 			goat_pointer = goat;
