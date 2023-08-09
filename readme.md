@@ -6,4 +6,4 @@ Press Ctrl+Shift+B , click on Run and Debug
 
 Enjoy the game
 
-or simply use the release version 
+*** or simply use the release version *** 
