@@ -11,8 +11,8 @@
 
 - Enjoy the game!
 
-## DEMO
-![Bagchaal](assets/1.png)
-![Bagchaal](assets/2.png)
-![Bagchaal](assets/3.png)
-![Bagchaal](assets/4.png)
+## DEMO IMAGES
+<img src="assets/1.png" width="600px"/>
+<img src="assets/2.png" width="600px"/>
+<img src="assets/3.png" width="600px"/>
+<img src="assets/4.png" width="600px"/>
