@@ -1,9 +1,18 @@
-Download SFML 2.5.1  
+## DISCLAIMER: The game cannot be played in full screen mode
 
-Download this repository and open Bagchalv2.2 in VS CODE
+## HOW TO GET STARTED:
+### Method1: go to release version and open Bagchalv2.2.exe
+### Method2: 
+- Download SFML 2.5.1  
 
-Press Ctrl+Shift+B , click on Run and Debug
+- Download this repository and open Bagchalv2.2 in VS CODE
 
-Enjoy the game
+- Press Ctrl+Shift+B , click on Run and Debug
 
-*** or simply use the release version *** 
+- Enjoy the game!
+
+## DEMO
+![Bagchaal](assests/1.png)
+![Bagchaal](assests/2.png)
+![Bagchaal](assests/3.png)
+![Bagchaal](assests/4.png)
