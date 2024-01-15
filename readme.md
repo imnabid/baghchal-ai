@@ -12,7 +12,7 @@
 - Enjoy the game!
 
 ## DEMO
-![Bagchaal](assests/1.png)
-![Bagchaal](assests/2.png)
-![Bagchaal](assests/3.png)
-![Bagchaal](assests/4.png)
+![Bagchaal](assets/1.png)
+![Bagchaal](assets/2.png)
+![Bagchaal](assets/3.png)
+![Bagchaal](assets/4.png)
